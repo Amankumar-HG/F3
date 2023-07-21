@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { UsersType } from 'src/app/data/user-types.enum';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -6,22 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./navigation-bar.component.css']
 })
 export class NavigationBarComponent {
+  public UsersType = UsersType;  // Expose the Enum to the template.
   public appName: String;
-  public hasLoggedIn: boolean;
+  public userType: String;
 
   constructor() {
     this.appName = "F2 Fertilizers";  // Farmer's Farm Fertilizers (F2 Fertilizers)
-    this.hasLoggedIn = true; // TODO: Check if user has logged in or not.
+    this.userType = UsersType.User; // TODO: Check the user type.
   }
 
   public logout(): void {
-    this.hasLoggedIn = false;
+    this.userType = UsersType.Guest;  // Update user type to guest.
     // TODO: Perform logout
   }
 
   public login(): void {
     // TODO: Perform login
-    this.hasLoggedIn = true;
     console.log("Navigate to Login Page");
   }
 
