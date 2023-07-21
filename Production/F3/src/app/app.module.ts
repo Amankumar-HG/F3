@@ -13,6 +13,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCommonModule } from '@angular/material/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
@@ -37,6 +38,7 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     NavigationBarComponent,
     FooterComponent,
     HomeComponent,
+    ProductCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -55,6 +58,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     BrowserAnimationsModule,
     // Materials
     MatCommonModule,
+    MatCardModule,
     MatButtonModule,
     MatDialogModule,
     MatDividerModule,
@@ -83,4 +87,4 @@ import { MatSidenavModule } from '@angular/material/sidenav';
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }
