@@ -1,1 +1,24 @@
-<p>navigation-bar works!</p>
+<mat-toolbar color="primary">
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>agriculture</mat-icon>
+    </button>
+    <span>{{appName}}</span>
+    <span class="example-spacer"></span>
+    <div *ngIf="hasLoggedIn; else elseBlock">
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon"
+            (click)="openCart()">
+            <mat-icon>shopping_cart</mat-icon>
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon"
+            aria-label="Example icon-button with share icon">
+            <mat-icon>account_circle</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="logout()"><mat-icon>logout</mat-icon> Logout</button>
+        </mat-menu>
+    </div>
+    <ng-template #elseBlock>
+        <button mat-raised-button color="accent" (click)="signup()">Signup</button>
+        <button mat-raised-button color="accent" (click)="login()">Login</button>
+    </ng-template>
+</mat-toolbar>

@@ -38,8 +38,6 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 
-
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +72,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
-    // TODO: Remove Below if Components are not used. 
+    // TODO: Remove Below if Components are not used.
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
@@ -83,7 +81,6 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatSidenavModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
-
+export class AppModule {}
