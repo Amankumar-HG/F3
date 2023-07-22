@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "f2-fertilizers": {
+      "hosting": {
+        "F3": [
+          "f2-fertilizers"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "f2-fertilizers"
+  }
+}

@@ -1,0 +1,89 @@
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col"></div>
+        <div class="col-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form>
+                        <div class="mb-3">
+                            <h4 class="text-dark text-muted">Login</h4>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input type="email" class="form-control" name="email" [(ngModel)]="email">
+                        </div>
+
+                        
+            
+              
+
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input type="password" class="form-control" name="password" [(ngModel)]="password">
+                        </div>
+
+                        <button type="button" class="btn btn-info" (click)="login()">Login</button>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a routerLink="/register" style="text-decoration: none;">Need Account ? <span
+                                        class="text-danger">Register</span></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>
+
+
+<!-- =========================================================== -->
+
+<!-- 
+<div class="container-fluid">
+    <div class="row mt-5 justify-content-center">
+      <div class="col-10 col-sm-8 col-md-6 col-lg-4">
+        <div class="card shadow rounded">
+          <div class="card-body">
+            <form>
+              <div class="text-center mb-4">
+                <h4 class="text-primary">Login</h4>
+              </div>
+  
+             
+              <mat-form-field class="input-field">
+                <mat-label>Role</mat-label>
+                <mat-select name="role" [(ngModel)]="role" required>
+                  <mat-option value="user">User</mat-option>
+                  <mat-option value="admin">Admin</mat-option>
+                </mat-select>
+              </mat-form-field>
+  
+              <mat-form-field class="input-field">
+                <mat-label>Email</mat-label>
+                <input matInput type="email" name="email" [(ngModel)]="email" required>
+              </mat-form-field>
+  
+              <mat-form-field class="input-field">
+                <mat-label>Password</mat-label>
+                <input matInput type="password" name="password" [(ngModel)]="password" required>
+              </mat-form-field>
+  
+              <button mat-raised-button color="primary" class="login-button" (click)="login()">Login</button>
+  
+              <div class="text-center mt-3">
+                <a routerLink="/register" class="text-primary" style="text-decoration: none;">Need an Account? <span
+                    class="text-danger">Register</span></a>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+
+
+   -->
