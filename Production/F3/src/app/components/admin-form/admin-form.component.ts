@@ -3,6 +3,7 @@ import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { NewProduct } from 'src/app/data/new-product';
+import { Product } from 'src/app/data/product';
 
 @Component({
   selector: 'app-admin-form',

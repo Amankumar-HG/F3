@@ -41,6 +41,7 @@ export class ProductCardComponent {
   }
 
   public addProductToCart(product: Product) {
+    console.log('Add Product to Cart: ', product.id);
     // TODO: Add item to the cart
     let cartItem: CartItem = new CartItem(
       String(product.id),

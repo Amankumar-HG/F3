@@ -12,7 +12,7 @@ import { Product } from 'src/app/data/product';
 })
 export class HomeComponent implements OnInit {
   private itemCartCollectionName: string;
-  public productList: any;
+  public productList: Product[];
 
   constructor(private afs: AngularFirestore, private cardService: CardService) {
     this.itemCartCollectionName = 'products';
@@ -20,8 +20,19 @@ export class HomeComponent implements OnInit {
   }
 
   public ngOnInit(): void {
-    this.getProductList().subscribe((querySnapshot: QuerySnapshot<any>) => {
-      this.productList = querySnapshot.docs.map((doc) => doc.data());
+    this.getProductList().subscribe((querySnapshot: QuerySnapshot<Product>) => {
+      querySnapshot.docs.map((doc) => {
+        let docId = doc.id;
+        let data = doc.data();
+        this.productList.push(new Product(
+          docId,
+          data.name,
+          data.description,
+          data.price,
+          data.image,
+          data.manufacturer
+        ));
+      });
     });
   }
 
