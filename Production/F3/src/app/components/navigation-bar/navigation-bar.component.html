@@ -15,6 +15,13 @@
             <mat-icon>shopping_cart</mat-icon>
         </button>
 
+        <!-- Form Dialog for ONLY Admin -->
+        <button *ngIf="userType == UsersType.Admin" mat-raised-button color="accent" class="example-icon"
+            aria-label="Example icon-button with share icon" (click)="openAdminForm()">
+            <mat-icon>add</mat-icon>
+            Fertilizer
+        </button>
+
         <!-- For both User and Admin -->
         <button mat-icon-button [matMenuTriggerFor]="menu" class="example-icon"
             aria-label="Example icon-button with share icon">
