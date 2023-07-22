@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import * as jsPDF from 'jspdf';
-import { CartItem } from 'src/app/interfaces/cart-items';
+import { CartItem } from 'src/app/data/cart-item';
 import { CardService } from 'src/app/services/card.service';
 @Component({
   selector: 'app-payment',
@@ -29,13 +29,9 @@ export class PaymentComponent {
   public fetchDataFromFirebase() {
     this.cardService.getCartItems().subscribe((data: any[]) => {
       this.dataSource = data.map((item) => ({
-        id: item.payload.doc.id,
-        imageurl: item.payload.doc.data().imageurl,
-        name: item.payload.doc.data().name,
-        price: item.payload.doc.data().price,
-        quantity: item.payload.doc.data().quantity,
-        itemTotal: item.payload.doc.data().itemTotal,
-      }));
+              id: item.payload.doc.id,
+            ...item.payload.doc.data()
+            }));
     });
   }
   public generatePDF(): void {
@@ -50,7 +46,7 @@ export class PaymentComponent {
     for (const item of this.dataSource) {
       const productName = item.name;
       const quantity = item.quantity;
-      const totalPrice = item.itemTotal;
+      const totalPrice = item.price * item.quantity;
 
       //TODO: User data is not available yet
       doc.text(`Product Name: ${productName}`, 20, yPos);

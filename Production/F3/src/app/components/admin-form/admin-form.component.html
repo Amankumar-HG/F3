@@ -1,6 +1,6 @@
 <h2 mat-dialog-title>Fertilizer</h2>
 <mat-dialog-content>
-    <form [formGroup]="fertilizerForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="fertilizerForm" >
         <mat-form-field>
             <mat-label>Fertilizer Name</mat-label>
             <input matInput formControlName="name" required>
@@ -23,5 +23,5 @@
     </form>
 </mat-dialog-content>
 <mat-dialog-actions>
-    <button mat-raised-button color="primary" type="submit">Add</button>
+    <button mat-raised-button color="primary" type="submit" (click)="onSubmit()">Add</button>
 </mat-dialog-actions>

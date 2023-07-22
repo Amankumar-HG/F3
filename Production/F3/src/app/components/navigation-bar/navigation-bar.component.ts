@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { UsersType } from 'src/app/data/user-types.enum';
 import { AdminFormComponent } from '../admin-form/admin-form.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navigation-bar',
@@ -13,7 +14,7 @@ export class NavigationBarComponent {
   public appName: String;
   public userType: String;
 
-  constructor(public adminFormDialog: MatDialog) {
+  constructor(public router: Router,public adminFormDialog: MatDialog) {
     this.appName = "F2 Fertilizers";  // Farmer's Farm Fertilizers (F2 Fertilizers)
     this.userType = UsersType.Admin; // TODO: Check the user type.
   }
@@ -35,24 +36,20 @@ export class NavigationBarComponent {
 
   public openCart(): void {
     // TODO: Navigate to the Cart Page
+    this.router.navigate(['/cart']);
     console.log("Navigate to Cart Page");
   }
 
   public openAdminForm(): void {
-    let productName: string = "ABC";
-    let productPrice: number = 12;
+    // TODO: Get the current admin id.
+    let id: string = "";
 
     const dialogConfig = new MatDialogConfig();
-    // dialogConfig.minWidth = '512px'; // Set the desired width here
-
-    // Pass the data to the dialog
-    dialogConfig.data = { name: productName, price: productPrice };
+    dialogConfig.data = { id: id};
 
     const dialogRef = this.adminFormDialog.open(AdminFormComponent, dialogConfig);
-
-    dialogRef.afterClosed().subscribe(result => {
-      console.log('The dialog was closed');
-      productPrice = result;
-    });
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log('The dialog was closed');
+    // });
   }
 }

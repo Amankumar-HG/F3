@@ -1,34 +1,35 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/compat/firestore';
+import {
+  AngularFirestore,
+  AngularFirestoreCollection,
+} from '@angular/fire/compat/firestore';
 import { Observable } from 'rxjs';
-import { CartItem } from '../interfaces/cart-items';
+import { CartItem } from '../data/cart-item';
+import { Product } from '../data/product';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CardService {
+  private itemCartCollectionName: string;
+  public cartItems: CartItem[];
 
-  constructor(private afs: AngularFirestore) {}
-
-  public getCartItems(){
-    return this.afs.collection("cartitems").snapshotChanges();
-    
+  constructor(private afs: AngularFirestore) {
+    this.itemCartCollectionName = 'cart_items';
+    this.cartItems = [];
   }
 
-  public addCartItem(item: CartItem) {
-
-    // To generate a new unique ID for the cart item
-    item.id = parseInt(this.afs.createId());
-    return this.afs.collection("cartitems").add(item);
+  public getCartItems() {
+    return this.afs.collection(this.itemCartCollectionName).snapshotChanges();
   }
-  
 
   public updateCartItem(item: CartItem) {
-    return this.afs.doc("cartitems/"+item.id).update(item);
+    return this.afs
+      .doc(this.itemCartCollectionName + '/' + item.id)
+      .update(item);
   }
 
-  public removeCartItem(id: number) {
-    return this.afs.doc("cartitems/"+id).delete();
+  public removeCartItem(id: string) {
+    return this.afs.doc(this.itemCartCollectionName + '/' + id).delete();
   }
- 
 }
