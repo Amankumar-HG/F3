@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { CartComponent } from './components/cart/cart.component';
-import { PaymentComponent } from './components/payment/payment.component';
+//import { PaymentComponent } from './components/payment/payment.component';
 import { NavigationBarComponent } from './components/navigation-bar/navigation-bar.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
@@ -14,6 +14,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { MatCommonModule } from '@angular/material/core';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -37,6 +38,13 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { AngularFireModule } from '@angular/fire/compat';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
+import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { environment } from '../environments/environment';
+import { RouterModule } from '@angular/router';
+import { PaymentComponent } from './components/payment/payment.component';
+import { FormsModule } from '@angular/forms';
 
 
 
@@ -50,14 +58,20 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     NavigationBarComponent,
     FooterComponent,
     HomeComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    RouterModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFirestoreModule,
+    FormsModule,
     // Materials
     MatCommonModule,
     MatButtonModule,
+    MatCardModule,
     MatDialogModule,
     MatDividerModule,
     MatExpansionModule,
@@ -68,12 +82,14 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatListModule,
     MatMenuModule,
     MatPaginatorModule,
-    MatRadioModule,
+    MatDialogModule,
     MatRippleModule,
+    MatRadioModule,
     MatSnackBarModule,
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
+    
     // TODO: Remove Below if Components are not used. 
     MatProgressBarModule,
     MatProgressSpinnerModule,
@@ -81,6 +97,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     MatCheckboxModule,
     MatSelectModule,
     MatSidenavModule,
+
+    
   ],
   providers: [],
   bootstrap: [AppComponent]

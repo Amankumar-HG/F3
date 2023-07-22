@@ -1,1 +1,76 @@
-<p>cart works!</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Cart</title>
+  <link rel="stylesheet" href="./cart.component.css"> 
+</head>
+<body>
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8 demo-table">
+    <ng-container matColumnDef="demo-id">
+      <th mat-header-cell *matHeaderCellDef>No.</th>
+      <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="demo-image">
+      <th mat-header-cell *matHeaderCellDef>Image</th>
+      <td mat-cell *matCellDef="let element">
+        <img [src]="element.imageurl" alt="Image" />
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="demo-name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="demo-price">
+      <th mat-header-cell *matHeaderCellDef>Price</th>
+      <td mat-cell *matCellDef="let element">{{ element.price }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="demo-quantity">
+      <th mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="incrementQuantity(element)">
+          <mat-icon>add</mat-icon>
+        </button>
+        {{ element.quantity }}
+        <button mat-icon-button (click)="decrementQuantity(element)">
+          <mat-icon>remove</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="demo-actions">
+      <th mat-header-cell *matHeaderCellDef>Actions</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button (click)="removeItem(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+  
+    <ng-container matColumnDef="demo-item-total">
+      <th mat-header-cell *matHeaderCellDef>Item Total</th>
+      <td mat-cell *matCellDef="let element">{{ element.itemTotal }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="itemTotalSum" >
+      <td mat-footer-cell *matFooterCellDef colspan="9" id="item">
+        Item Total including tax and gst: {{ calculateItemTotalSum() }}
+      </td>
+    </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    <tr mat-footer-row *matFooterRowDef="['itemTotalSum']"></tr>
+  </table>
+ <div id="redirect-button">
+  <button mat-raised-button color="primary"   (click)="redirectToPaymentPage()">
+    Proceed to Payment
+  </button>
+ </div>
+  
+</body>
+</html>

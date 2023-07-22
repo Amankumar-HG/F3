@@ -1,0 +1,42 @@
+.card {
+    max-width: 512px; 
+    width: 100%;
+    height: 512px;
+    margin: 64px auto ;
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .example-radio-group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: flex-start;
+  }
+  
+  .example-radio-button {
+    margin: 0 8px;
+  }
+
+  .mdc-card__actions{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 16px;
+  }
+  .img-container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .img-container .image{
+    width:64px;
+   
+  }
+ 
