@@ -1,0 +1,31 @@
+.card {
+    width: 256px;
+    height: 536px;
+    margin-bottom: 24px;
+}
+
+.container-product-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.product-description {
+    /* Limit to three lines */
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    overflow: hidden;
+}
+
+.button-read-more {
+    align-self: flex-end;
+}
+
+.container-add-to-cart {
+    display: flex;
+    margin-top: auto;
+}
+
+.button-add-to-cart {
+    flex: 1;
+}

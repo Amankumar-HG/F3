@@ -1,0 +1,27 @@
+<h2 mat-dialog-title>Fertilizer</h2>
+<mat-dialog-content>
+    <form [formGroup]="fertilizerForm" (ngSubmit)="onSubmit()">
+        <mat-form-field>
+            <mat-label>Fertilizer Name</mat-label>
+            <input matInput formControlName="name" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Fertilizer Description</mat-label>
+            <textarea matInput formControlName="description" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Fertilizer Price</mat-label>
+            <input matInput type="number" formControlName="price" required>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Image URL</mat-label>
+            <input matInput formControlName="imageUrl" required>
+        </mat-form-field>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-raised-button color="primary" type="submit">Add</button>
+</mat-dialog-actions>

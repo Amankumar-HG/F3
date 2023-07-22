@@ -11,10 +11,11 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { MatCommonModule } from '@angular/material/core';
-import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -47,6 +48,8 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { FormsModule } from '@angular/forms';
 
 
+import { ProductCardComponent } from './components/product-card/product-card.component';
+import { AdminFormComponent } from './components/admin-form/admin-form.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +62,8 @@ import { FormsModule } from '@angular/forms';
     FooterComponent,
     HomeComponent,
     
+    ProductCardComponent,
+    AdminFormComponent,
   ],
   imports: [
     BrowserModule,
@@ -68,8 +73,10 @@ import { FormsModule } from '@angular/forms';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,
     FormsModule,
+    ReactiveFormsModule,
     // Materials
     MatCommonModule,
+    MatCardModule,
     MatButtonModule,
     MatCardModule,
     MatDialogModule,
@@ -91,6 +98,7 @@ import { FormsModule } from '@angular/forms';
     MatTooltipModule,
     
     // TODO: Remove Below if Components are not used. 
+    // TODO: Remove Below if Components are not used.
     MatProgressBarModule,
     MatProgressSpinnerModule,
     MatDatepickerModule,
@@ -101,7 +109,6 @@ import { FormsModule } from '@angular/forms';
     
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule { }
-
