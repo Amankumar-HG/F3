@@ -25,7 +25,7 @@ export class AdminFormComponent {
       name: ['', Validators.required],
       description: ['', Validators.required],
       price: [, [Validators.required, Validators.min(1)]],
-      imageUrl: ['', Validators.required],
+      image: ['', Validators.required],
     });
   }
 
@@ -38,7 +38,7 @@ export class AdminFormComponent {
         this.fertilizerForm.value.name,
         this.fertilizerForm.value.description,
         this.fertilizerForm.value.price,
-        this.fertilizerForm.value.imageUrl,
+        this.fertilizerForm.value.image,
         manufacturer
       );
 
