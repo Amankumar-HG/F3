@@ -50,6 +50,7 @@ import { FormsModule } from '@angular/forms';
 
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { AdminFormComponent } from './components/admin-form/admin-form.component';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 @NgModule({
   declarations: [
@@ -74,6 +75,9 @@ import { AdminFormComponent } from './components/admin-form/admin-form.component
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
+    provideFirebaseApp(() =>initializeApp(environment.firebase)),
+
+    provideFirestore(() =>getFirestore()),
     // Materials
     MatCommonModule,
     MatCardModule,

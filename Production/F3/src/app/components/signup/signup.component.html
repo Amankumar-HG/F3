@@ -1,1 +1,54 @@
-<p>signup works!</p>
+<div class="container-fluid">
+    <div class="row mt-5">
+        <div class="col"></div>
+        <div class="col-4">
+            <div class="card shadow">
+                <div class="card-body">
+                    <form [formGroup]="registerForm" #f="ngForm">
+                        <div class="mb-3">
+                            <h4 class="text-dark text-muted">Register</h4>
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Name</label>
+                            <input formControlName="username" type="email" class="form-control" name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Email</label>
+                            <input formControlName="email" type="email" class="form-control" name="email">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputPassword1" class="form-label">Password</label>
+                            <input formControlName="password" type="password" class="form-control" name="password">
+                        </div>
+                        <div class="mb-3">
+                            <label for="exampleInputEmail1" class="form-label">Phone</label>
+                            <input formControlName="phone" type="tel" class="form-control" name="phone">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Role</label>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="role" value="customer" checked
+                                    required>
+                                <label class="form-check-label">Customer</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="role" value="seller"
+                                    required>
+                                <label class="form-check-label">Seller</label>
+                            </div>
+                        </div>
+
+                        <button type="submit" class="btn btn-info" (click)="signup(f)">Register</button>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <a href="/login" style="text-decoration: none;">Have an account ? <span
+                                        class="text-danger">Register</span></a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+</div>

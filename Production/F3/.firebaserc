@@ -1,0 +1,15 @@
+{
+  "targets": {
+    "f2-fertilizers": {
+      "hosting": {
+        "LoginRegister": [
+          "f2-fertilizers"
+        ]
+      }
+    }
+  },
+
+  "projects": {
+    "default": "f2-fertilizers"
+  }
+}
