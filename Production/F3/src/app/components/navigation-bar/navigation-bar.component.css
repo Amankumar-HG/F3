@@ -5,3 +5,7 @@
 .mat-mdc-button-base {
     margin: 4px 4px 4px 0;
 }
+
+.f1-brand-name:hover{
+    cursor: pointer;
+}

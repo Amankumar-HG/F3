@@ -1,9 +1,9 @@
 <mat-toolbar color="primary">
     <!-- Brand Logo and Name -->
-    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+    <button class="example-icon" mat-icon-button routerLink="" aria-label="Example icon-button with menu icon">
         <mat-icon>agriculture</mat-icon>
     </button>
-    <span>{{appName}}</span>
+    <span class="f1-brand-name" (click)="navigateToHomePage()">{{appName}}</span>
 
     <span class="example-spacer"></span>
 
@@ -11,7 +11,7 @@
     <div *ngIf="userType == UsersType.User || userType == UsersType.Admin; else elseBlock">
         <!-- Navigation to Cart Page for ONLY User -->
         <button *ngIf="userType == UsersType.User" mat-icon-button class="example-icon"
-            aria-label="Example icon-button with share icon" (click)="openCart()">
+            aria-label="Example icon-button with share icon" (click)="navigateToCartPage()">
             <mat-icon>shopping_cart</mat-icon>
         </button>
 
@@ -34,7 +34,7 @@
 
     <!-- Navigation for Guest -->
     <ng-template #elseBlock>
-        <button mat-raised-button color="accent" (click)="signup()">Signup</button>
-        <button mat-raised-button color="accent" (click)="login()">Login</button>
+        <button *ngIf="router.url !== '/signup'  && router.url !== '/forgot-password'" mat-raised-button color="accent" (click)="navigateToSignupPage()">Signup</button>
+        <button *ngIf="router.url !== '/login'  && router.url !== '/forgot-password'" mat-raised-button color="accent" (click)="navigateToLoginPage()">Login</button>
     </ng-template>
 </mat-toolbar>

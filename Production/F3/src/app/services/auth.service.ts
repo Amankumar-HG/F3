@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import {AngularFireAuth} from '@angular/fire/compat/auth'
 import { AngularFirestore } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-
+import firebase from 'firebase/compat/app';
 @Injectable({
   providedIn: 'root'
 })
@@ -21,20 +21,16 @@ export class AuthService {
         this.router.navigate(['']);
     }, err => {
         alert(err.message);
-        this.router.navigate(['/login']);
+        this.router.navigate(['login']);
     })
   }
 
   register(email : string, password : string) {
-    this.fireAuth.createUserWithEmailAndPassword(email, password).then( res =>
-      {
-          alert('Registration Successful');
-          this.router.navigate(['/login']);
+    this.fireAuth.createUserWithEmailAndPassword(email, password).then( res => {
+          this.router.navigate(['login']);
     }, err => {
-      alert(err.message);
-      this.router.navigate(['/signup']);
+      this.router.navigate(['signup']);
     })
-
   }
 
   // sign out
@@ -61,5 +57,47 @@ export class AuthService {
     }
 
     return userType;
+  }
+  
+  async logInWithGoogle() {
+    try {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      const result = await this.fireAuth.signInWithPopup(provider);
+      return result.user;
+    } catch (error) {
+      console.error('Error during Google Sign-in:', error);
+      throw error;
+    }
+  }
+
+  async logOut() {
+    try {
+      await this.fireAuth.signOut();
+      localStorage.removeItem('token');
+    } catch (error) {
+      console.error('Error during Sign-out:', error);
+      throw error;
+    }
+  }
+
+  async signInWithGoogle() {
+    try {
+      const provider = new firebase.auth.GoogleAuthProvider();
+      const result = await this.fireAuth.signInWithPopup(provider);
+      return result.user;
+    } catch (error) {
+      console.error('Error during Google Sign-in:', error);
+      throw error;
+    }
+  }
+
+  async signOut() {
+    try {
+      await this.fireAuth.signOut();
+      localStorage.removeItem('token');
+    } catch (error) {
+      console.error('Error during Sign-out:', error);
+      throw error;
+    }
   }
 }

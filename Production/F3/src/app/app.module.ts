@@ -40,17 +40,17 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AngularFireModule } from '@angular/fire/compat';
-import { AngularFirestoreModule } from '@angular/fire/compat/firestore'
-import { initializeApp,provideFirebaseApp } from '@angular/fire/app';
+import { AngularFirestoreModule } from '@angular/fire/compat/firestore';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
 import { PaymentComponent } from './components/payment/payment.component';
 import { FormsModule } from '@angular/forms';
 
-
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { AdminFormComponent } from './components/admin-form/admin-form.component';
 import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { ForgotPasswordComponent } from './components/forgot-password/forgot-password.component';
 
 @NgModule({
   declarations: [
@@ -62,9 +62,9 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     NavigationBarComponent,
     FooterComponent,
     HomeComponent,
-    
     ProductCardComponent,
     AdminFormComponent,
+    ForgotPasswordComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,9 +75,9 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     AngularFirestoreModule,
     FormsModule,
     ReactiveFormsModule,
-    provideFirebaseApp(() =>initializeApp(environment.firebase)),
+    provideFirebaseApp(() => initializeApp(environment.firebase)),
 
-    provideFirestore(() =>getFirestore()),
+    provideFirestore(() => getFirestore()),
     // Materials
     MatCommonModule,
     MatCardModule,
@@ -100,8 +100,8 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     MatTableModule,
     MatToolbarModule,
     MatTooltipModule,
-    
-    // TODO: Remove Below if Components are not used. 
+
+    // TODO: Remove Below if Components are not used.
     // TODO: Remove Below if Components are not used.
     MatProgressBarModule,
     MatProgressSpinnerModule,
@@ -109,10 +109,8 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
     MatCheckboxModule,
     MatSelectModule,
     MatSidenavModule,
-
-    
   ],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

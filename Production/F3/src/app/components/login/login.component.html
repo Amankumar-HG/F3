@@ -21,10 +21,13 @@
                         <button type="button" class="btn btn-info" (click)="login()">Login</button>
                         <div class="row">
                             <div class="col-md-6">
-                                <a routerLink="/signup" style="text-decoration: none;">Need Account ? <span
-                                        class="text-danger">Register</span></a>
+                                <a routerLink="/forgot-password" style="text-decoration: none;">Forgot Password?</a>
+                                <a routerLink="/signup" style="text-decoration: none;">Create a new account.</a>
                             </div>
                         </div>
+                        <div>
+                            <button mat-raised-button color="primary" (click)="logInWithGoogle()">Log In with Google</button>
+                          </div>
                     </form>
                 </div>
             </div>

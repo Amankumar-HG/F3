@@ -25,16 +25,16 @@
                             <input formControlName="phone" type="tel" class="form-control" name="phone">
                         </div>
                         <div class="mb-3">
-                            <label class="form-label">Role</label>
+                            <label class="form-label">How do you want to use our website?</label>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="role" value="customer" checked
-                                    required>
-                                <label class="form-check-label">Customer</label>
+                                <input class="form-check-input" type="radio" formControlName="userType" [value]="userTypes.User" 
+                                [checked] required>
+                                <label class="form-check-label">I want to purchase</label>
                             </div>
                             <div class="form-check">
-                                <input class="form-check-input" type="radio" name="role" value="seller"
+                                <input class="form-check-input" type="radio" formControlName="userType" [value]="userTypes.Admin"
                                     required>
-                                <label class="form-check-label">Seller</label>
+                                <label class="form-check-label">I want to Sell</label>
                             </div>
                         </div>
 
@@ -45,6 +45,10 @@
                                         class="text-danger">Register</span></a>
                             </div>
                         </div>
+                        <div>
+                            <button mat-raised-button color="primary" (click)="signUpWithGoogle()">Sign up with Google</button>
+                          </div>
+                          
                     </form>
                 </div>
             </div>
