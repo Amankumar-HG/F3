@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { CartItem } from 'src/app/data/cart-item';
 import { Product } from 'src/app/data/product';
 import { CardService } from 'src/app/services/card.service';
@@ -8,16 +8,21 @@ import {
 } from '@angular/fire/compat/firestore';
 import { Observable, map } from 'rxjs';
 import { Router } from '@angular/router';
+import { UserTypes } from 'src/app/data/user-types.enum';
+import { User } from 'src/app/data/user';
 
 @Component({
   selector: 'app-product-card',
   templateUrl: './product-card.component.html',
   styleUrls: ['./product-card.component.css'],
 })
-export class ProductCardComponent {
+export class ProductCardComponent implements OnInit {
   @Input() public product!: Product;
   private itemCartCollectionName: string;
   private itemCartCollectionFieldId: string;
+
+  public UserTypes = UserTypes;
+  public userType: UserTypes; 
 
   constructor(
     private router: Router,
@@ -26,6 +31,21 @@ export class ProductCardComponent {
   ) {
     this.itemCartCollectionName = 'cart_items';
     this.itemCartCollectionFieldId = 'id';
+    this.userType = UserTypes.User;
+  }
+
+  public ngOnInit(): void {
+    this.userType = UserTypes.Guest;
+
+    let tokenValue = localStorage.getItem('token');
+    if (tokenValue != null) {
+      let user = JSON.parse(tokenValue) as User;
+      if (user.userType == UserTypes.Admin) {
+        this.userType = UserTypes.Admin;
+      } else if (user.userType == UserTypes.User ) {
+        this.userType = UserTypes.User;
+      }
+    }
   }
 
   /**

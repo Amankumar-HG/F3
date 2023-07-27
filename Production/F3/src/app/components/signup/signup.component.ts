@@ -5,6 +5,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { UserTypes } from 'src/app/data/user-types.enum';
+import { User } from 'src/app/data/user';
 
 @Component({
   selector: 'app-register',
@@ -20,7 +21,7 @@ export class SignupComponent implements OnInit {
     private router: Router,
     private firestore: Firestore,
     private fireAuth: AngularFireAuth,
-    private googleAuthService: AuthService,
+    private googleAuthService: AuthService
   ) {
     // Initialize the registerForm using FormBuilder
     this.registerForm = formBuilder.group({
@@ -76,8 +77,9 @@ export class SignupComponent implements OnInit {
   async signUpWithGoogle() {
     try {
       const user = await this.googleAuthService.signInWithGoogle();
-      localStorage.setItem('token', UserTypes.User);
-      this.router.navigate([""]); // Navigate to the Home page.
+      const tokenValue = new User(UserTypes.User, '', (user?.email != null ? user.email : '')).toPlainObject();
+      localStorage.setItem('token', JSON.stringify(tokenValue));
+      this.router.navigate(['']); // Navigate to the Home page.
       // Here, you can handle the user data and any additional steps you may require.
     } catch (error) {
       console.error('Error during Google Sign-in:', error);
@@ -88,6 +90,7 @@ export class SignupComponent implements OnInit {
     try {
       await this.googleAuthService.signOut();
       console.log('Sign-out successful!');
+      localStorage.clear();
       // Perform any additional tasks after successful sign-out.
     } catch (error) {
       console.error('Error during Sign-out:', error);

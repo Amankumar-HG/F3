@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/data/user';
 import { UserTypes } from 'src/app/data/user-types.enum';
 import { AuthService } from 'src/app/services/auth.service';
 
@@ -38,9 +39,9 @@ export class LoginComponent implements OnInit {
   async logInWithGoogle() {
     try {
       const user = await this.auth.signInWithGoogle();
-      localStorage.setItem('token', UserTypes.User);
+      const tokenValue = new User(UserTypes.User, '', (user?.email != null ? user.email : '')).toPlainObject();
+      localStorage.setItem('token', JSON.stringify(tokenValue));
       this.router.navigate([""]); // Navigate to the Home page.
-      // Here, you can handle the user data and any additional steps you may require.
     } catch (error) {
       console.error('Error during Google Sign-in:', error);
     }
@@ -49,9 +50,11 @@ export class LoginComponent implements OnInit {
   async logOut() {
     try {
       await this.auth.signOut();
+      localStorage.clear();
       console.log('Sign-out successful!');
       // Perform any additional tasks after successful sign-out.
     } catch (error) {
+      localStorage.clear();
       console.error('Error during Sign-out:', error);
     }
   }
